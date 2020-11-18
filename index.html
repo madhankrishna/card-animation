@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shoe card</title>
+    <link rel="shortcut icon" href="adidas.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="cardBox">
+            <div class="imgBox">
+                <div class="cricle"></div>
+                <img src="adidas.png" alt="" srcset="">
+            </div>
+            <div class="text">
+                <h1 class="title">Adidas ZX</h1>
+                <h3>FUTURE-READY TRAINERS WITH WRAPPED BOOST FOR EXCEPTION COMFORT</h3>
+                <div class="buttons">
+                    <button>39</button>
+                    <button>40</button>
+                    <button class="active">41</button>
+                    <button>42</button>
+                </div>
+                <div class="buy">
+                    <button class="purchase">PURCHASE</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const container=document.querySelector(".container");
+    const card=document.querySelector(".cardBox");
+    const title = document.querySelector(".title");
+    const sneaker = document.querySelector("img");
+    const purchase = document.querySelector(".buy button");
+    const description = document.querySelector("h3");
+    const sizes = document.querySelector(".buttons");
+
+    container.addEventListener("mousemove", (e) =>{
+        let xAxis = (window.innerWidth / 2 - e.pageX) / 23;
+        let yAxis = (window.innerHeight / 2 - e.pageY) / 22;
+        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+
+    });
+    container.addEventListener("mouseenter", (e) => {
+           card.style.transition = "none";
+           //Popout
+           title.style.transform = "translateZ(150px)";
+           sneaker.style.transform = "translateZ(200px) rotateZ(-30deg)";
+           description.style.transform = "translateZ(125px)";
+           sizes.style.transform = "translateZ(100px)";
+           purchase.style.transform = "translateZ(75px)";
+});
+//Animate Out
+container.addEventListener("mouseleave", (e) => {
+           card.style.transition = "all 0.5s ease";
+           card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+           //Popback
+           title.style.transform = "translateZ(0px)";
+           sneaker.style.transform = "translateZ(0px) rotateZ(0deg)";
+           description.style.transform = "translateZ(0px)";
+           sizes.style.transform = "translateZ(0px)";
+           purchase.style.transform = "translateZ(0px)";
+});
+   
+</script>
+</html>
